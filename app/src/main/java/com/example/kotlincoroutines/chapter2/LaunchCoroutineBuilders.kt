@@ -14,7 +14,6 @@ fun main() {  // main Function Executes in the Main Thread
             println("Fake work starts: ${Thread.currentThread().name}") //thread:T1
 
             delay(1000) // coroutines is suspended but thread:T1 is free( not blocked)
-            // or mySuspendedFunc(2000)
 
             println("Fake work ends: ${Thread.currentThread().name}") //Either thread:T1 or some other thread
         }
@@ -41,8 +40,7 @@ fun main() {  // main Function Executes in the Main Thread
             println("Fake work ends: ${Thread.currentThread().name}") //Either main thread or some other thread
         }
 
-        job.join() //main thread , wait for our previous coroutines to finish its task,practically it is not a right way to wait
-        // or mySuspendedFunc(2000)
+        job.join() //main thread , wait for our previous coroutines to finish its task
 
         println("Main Program ends :${Thread.currentThread().name}") // main thread
 
@@ -61,6 +59,8 @@ fun main() {  // main Function Executes in the Main Thread
      so instead of delay(), we can use job.join()
 
      - this join() fun will wait for the coroutine to finish its execution.
+
+     note that : join() is a suspended fun
      ================
         */
 }
