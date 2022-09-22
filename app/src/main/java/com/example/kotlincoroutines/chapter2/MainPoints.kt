@@ -88,5 +88,31 @@ package com.example.kotlincoroutines.chapter2
           }
 
 
+    1. launch
+    =============
+   Launches a new coroutine without blocking the current thread .
+
+        -and this function returns a reference to the coroutine as a Job.
+
+        -The coroutine is cancelled when the resulting job is cancelled.
+
+     This Job Object :
+     =====================
+     Using this Job Object you can control this coroutine .So as mentioned before using delay()
+     is not the best practice here to to wait the coroutine until finish its work .
+     so instead of delay(), we can use job.join()
+
+     - this join() fun will wait for the coroutine to finish its execution.
+     - using job.cancel() - > you can cancel the coroutine
+
+     Summarize launch{}
+     ==================
+     'launch{}' -> coroutine builder( fire and forget coroutine builder).
+          launches a new coroutine without blocking the current thread.
+           also this coroutine inherits the thread & coroutine scope from the immediate parent coroutine.
+
+     This fun : returns a reference to job object.
+     Using this job Object , you can cancel the coroutine or wait for coroutine to finish.
+     Hence , this job Object allows you to controll the coroutine.
 
  */
