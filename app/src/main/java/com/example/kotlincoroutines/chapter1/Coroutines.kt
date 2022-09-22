@@ -1,4 +1,4 @@
-package com.example.kotlincoroutines
+package com.example.kotlincoroutines.chapter1
 
 /* note:
 ============
