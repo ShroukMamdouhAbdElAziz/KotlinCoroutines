@@ -3,6 +3,7 @@ package com.example.kotlincoroutines
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 fun main(){  // main Function Executes in the Main Thread
@@ -27,8 +28,13 @@ fun main(){  // main Function Executes in the Main Thread
      as it is impossible know the time needed for the coroutine task to be completed
       so this statement  Thread.sleep(2000) is useless for a real project */
 
-    Thread.sleep(2000)
-   // delay(2000) -> canot be called outside coroutines or outside another suspend function
+  //  Thread.sleep(2000)
+   // delay(2000) -> delay is a suspended fun and are only allowed to be called from a coroutines
+    //   or from another suspending function.So we can call it inside runBlocking
+
+    runBlocking { // creates a coroutine that blocks the current main thread here
+        delay(2000) // wait for our previous coroutines to finish its task,practically it is not a right way to wait
+    }
 
     println("Main Program ends :${Thread.currentThread().name}")
 
@@ -68,6 +74,14 @@ fun main(){  // main Function Executes in the Main Thread
 
         delay(1000) will suspend the coroutines for 1 sec but it is not block the thread at all (which mean
         the execution of other coroutines will not be affected) */
+
+        -----------------------------------------------------------------------------------------
+        These Two functions : launch{} and runBlocking{} Creating coroutines
+        --------------------------------------------------------------------
+        GlobalScope.launch{} -> in this example  this launch fun creates a coroutines that doesn't block the main thread.
+        but this runBlocking{} -> creates a coroutine that blocks the main thread here/
  */
+
+
 
 
