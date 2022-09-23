@@ -114,5 +114,40 @@ package com.example.kotlincoroutines.chapter2
      This fun : returns a reference to job object.
      Using this job Object , you can cancel the coroutine or wait for coroutine to finish.
      Hence , this job Object allows you to controll the coroutine.
+    --------------------------------------------------------------------------------------------------------
+
+     /* Async Coroutine Builder
+    =============================
+
+     launches a new coroutine without blocking the current thread.
+           also this coroutine inherits the thread & coroutine scope from the immediate parent coroutine.
+
+    return a reference of Deferred Object which is a subclass of Job Object.
+    -------------------------------------------------------------------------
+   - Deferred is of Generic Type and we can put the type according the return we expexted from the lambda Expression
+    ( the last statement in lambda expression).
+
+    - using deferredObject : you can cancel the coroutine, wait for the coroutine to finish , or retieve the returned
+      value ( by using deferredObject.await().
+
+      ex:
+       ==jobDeferred.join() // wait for our previous coroutines to finish its task,practically it is not a right way to wait
+       == jobDeferred.await() // await() , if we want to use the returned value from the lambda expression.
+
+
+    Noting that : await() and join() are suspended functions , so we can use them inside the coroutine block
+    */
+------------------------------------------------------------------------------------------------------------------
+    runBlocking
+    -----------
+    is generally used to write test cases to test suspended functions.
+    ----------------------------------------------------------------------------
+
+    in the End , Please Note that , this launch and async coroutine builders never block the thread
+    in which it operates.
+     runBlocking , always block the thread in which it operates.( remember from its name)
 
  */
+
+
+
