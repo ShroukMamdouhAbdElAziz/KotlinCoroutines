@@ -13,7 +13,7 @@ package com.example.kotlincoroutines.chapter3
          find another way to execute the same task.
      3. for any  reason
  ------------------------------------------------------------------------------------
-  To cancel the coroutine , the coroutine has to be cooperative
+  To cancel the coroutine , the coroutine has to be cooperative( cancellable)
                                                ===================
 
   ex:
